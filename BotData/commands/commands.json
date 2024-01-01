@@ -1,0 +1,229 @@
+{
+  "command": [
+    {
+      "name": "help",
+      "perms": [
+        "👑 admins"
+      ],
+      "actions": [
+        {
+          "name": "help menu",
+          "category": "Message",
+          "type": "Send Embed",
+          "fields": [
+            {
+              "name": "!help",
+              "value": "Displays the menu.",
+              "inline": "false"
+            },
+            {
+              "name": "!info",
+              "value": "Shows relevant information.",
+              "inline": "false"
+            },
+            {
+              "name": "!kick [@user] reason",
+              "value": "Kick a user from the server",
+              "inline": "false"
+            },
+            {
+              "name": "!verify",
+              "value": "Exclusive to non-verified individuals.",
+              "inline": "true"
+            }
+          ],
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "1FFF57",
+          "title": "🤖 Help Menu",
+          "url": "",
+          "authorname": "Bonnie",
+          "authorimageurl": "",
+          "authorlink": "",
+          "description": "This is the command menu. It provides information on available commands and their functions.\n\n",
+          "thumbnail": "",
+          "image": "",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ],
+      "actions": [
+        {
+          "name": "show info",
+          "category": "Message",
+          "type": "Send Message",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.DefaultChannel.id}",
+          "messagetext": "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\n",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "kick",
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ],
+      "actions": [
+        {
+          "name": "Get Mentioned User",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "GetUserToKick",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "Reason to kick",
+          "category": "Variable",
+          "type": "Store Value in Variable",
+          "messageActionRows": [],
+          "varname": "ResonToKickUser",
+          "vartype": "Text",
+          "savevartype": "temp",
+          "param": "0"
+        },
+        {
+          "name": "Send DM to user for kick",
+          "category": "Message",
+          "type": "Send DM",
+          "messageActionRows": [],
+          "msgtype": "msg",
+          "userid": "${tempVars.GetUserToKick.id}",
+          "msg": "Subject: Discord Guild Removal Notification\n\nGreetings,\n\nYou have been expelled from ${dbsVars.guild.name} due to ${tempVars.ResonToKickUser}. We recommend reviewing the server rules and guidelines to ensure future compliance. If you have queries or wish to appeal, feel free to contact us.\n\nWishing you the best,\nThe Administration 🤖",
+          "color": "FFFFFF",
+          "title": "",
+          "url": "",
+          "author": "",
+          "description": "",
+          "thumbnail": "",
+          "image": "",
+          "timestamp": ""
+        },
+        {
+          "name": "Kick User",
+          "category": "User Action",
+          "type": "Kick User",
+          "messageActionRows": [],
+          "user": "${tempVars.GetUserToKick.id}",
+          "reason": "${tempVars.ResonToKickUser}"
+        }
+      ]
+    },
+    {
+      "name": "SendRules",
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ],
+      "actions": [
+        {
+          "name": "Server Rules",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "Server Rules",
+          "url": "",
+          "authorname": "",
+          "authorimageurl": "https://cdn.discordapp.com/avatars/1191053073410433024/fbf52073a9bec88649ab1713a5d69844.webp",
+          "authorlink": "",
+          "description": "**Welcome to Our Server!** 🚀\n\n1. **Respect Others:** Treat everyone with kindness and respect.\n2. **Chat Etiquette:** Keep discussions positive and appropriate.\n3. **Gaming Zone:** Gaming talks belong in 🎮-gaming-chat.\n4. **Newcomers:** Greet new members in 👋-welcome-messages.\n5. **Verify Yourself:** To accept the rules, type **`!verify`** in <#1191106699268997290>.\n6. **Tech Talk:** Explore tech in 🤖-tech-discussions.\n7. **Showcase Projects:** Share your work in 🚀-project-showcase.\n8. **Coding Help:** Seek coding assistance in 🛠-coding-help.\n9. **AI Queries:** Ask AI questions in ❓-ai-training-qa.\n10. **Community Support:** Help others in 🤝-community-support.\n11. **Ask Questions:** Pose general questions in ❓-general-questions.\n12. **Resource Sharing:** Share useful resources in 📚-resource-sharing.\n13. **Learning Corner:** Engage in the 📖-learning-corner.\n14. **Server Updates:** Stay tuned with 🚨-server-updates.\n15. **Report Issues:** Report problems in 🚨-report-section.\n16. **Server Stats:** Check out 📊-server-stats.\n17. **Voice Channels:** Hang out, get help, and game in voice channels.\n18. **Roles:** Roles define responsibilities and access.\n\n*Enjoy Your Stay!* 🌟",
+          "thumbnail": "",
+          "image": "",
+          "footer": "By Bonnie",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "perms": [],
+      "actions": [
+        {
+          "name": "Remove Unverified Role",
+          "category": "User Action",
+          "type": "Remove Role From User",
+          "messageActionRows": [],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "rolename": "1191517425271844935",
+          "reason": "User Verified"
+        },
+        {
+          "name": "Add Member Role",
+          "category": "User Action",
+          "type": "Add Role to User",
+          "messageActionRows": [],
+          "user": "${dbsVars.CommandAuthor.id}",
+          "rolename": "👥 Community Members"
+        },
+        {
+          "name": "Verified in Server DM",
+          "category": "Message",
+          "type": "Send DM",
+          "messageActionRows": [],
+          "msgtype": "msg",
+          "userid": "${dbsVars.CommandAuthor.id}",
+          "msg": "Congratulations! 🎉 You have been successfully verified in ${dbsVars.guild.name}. Welcome, <@${dbsVars.CommandAuthor.id}>. Enjoy your time in our community!",
+          "color": "FFFFFF",
+          "title": "",
+          "url": "",
+          "author": "",
+          "description": "",
+          "thumbnail": "",
+          "image": "",
+          "timestamp": ""
+        }
+      ]
+    },
+    {
+      "name": "userinfo",
+      "actions": [
+        {
+          "name": "Get Mentioned User_1",
+          "category": "Variable",
+          "type": "Get Mentioned User",
+          "messageActionRows": [],
+          "varname": "GetUserForUserInfo",
+          "vartype": "User",
+          "savevartype": "temp"
+        },
+        {
+          "name": "userinfo reponse",
+          "category": "Message",
+          "type": "Send Embed",
+          "messageActionRows": [],
+          "channelname": "${dbsVars.CommandChannel.id}",
+          "color": "FFFFFF",
+          "title": "User Avatar",
+          "url": "",
+          "authorname": "${dbsVars.CommandAuthor.displayName}",
+          "authorimageurl": "${dbsVars.CommandAuthor.user.avatarURL}",
+          "authorlink": "",
+          "description": "Name of User <@${tempVars.GetUserForUserInfo.id}> Avatar of User ${tempVars.GetUserForUserInfo.user.avatarURL}",
+          "thumbnail": "",
+          "image": "${tempVars.GetUserForUserInfo.user.avatarURL}",
+          "footer": "",
+          "timestamp": "BOOL_TRUE@@",
+          "savetovariable": "",
+          "savetovariabletype": "temp"
+        }
+      ]
+    }
+  ]
+}

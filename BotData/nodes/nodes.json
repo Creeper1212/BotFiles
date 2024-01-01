@@ -1,0 +1,671 @@
+{
+  "nodes": [
+    {
+      "type": "command",
+      "name": "help",
+      "guid": "7942fe4c-dffa-4146-8cab-d254b3d80d5d",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "37eda463-a170-44f9-af54-61378ffc9294"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 20,
+      "y": 101,
+      "perms": [
+        "👑 admins"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "info",
+      "guid": "2224944a-561a-4fa1-824b-2f31ea37c836",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "5053a44d-4a5e-460a-974d-da0cc07aac7c"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 15,
+      "y": 250,
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "help menu",
+      "guid": "37eda463-a170-44f9-af54-61378ffc9294",
+      "reactionFields": [],
+      "embedfields": [
+        {
+          "name": "!help",
+          "value": "Displays the menu.",
+          "inline": "false"
+        },
+        {
+          "name": "!info",
+          "value": "Shows relevant information.",
+          "inline": "false"
+        },
+        {
+          "name": "!kick [@user] reason",
+          "value": "Kick a user from the server",
+          "inline": "false"
+        },
+        {
+          "name": "!verify",
+          "value": "Exclusive to non-verified individuals.",
+          "inline": "true"
+        }
+      ],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "7942fe4c-dffa-4146-8cab-d254b3d80d5d"
+        }
+      ],
+      "x": 196,
+      "y": 92,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "1FFF57",
+        "🤖 Help Menu",
+        "",
+        "Bonnie",
+        "",
+        "",
+        "This is the command menu. It provides information on available commands and their functions.\n\n",
+        "",
+        "",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "show info",
+      "guid": "5053a44d-4a5e-460a-974d-da0cc07aac7c",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "2224944a-561a-4fa1-824b-2f31ea37c836"
+        }
+      ],
+      "x": 198,
+      "y": 239,
+      "rtype": "Message",
+      "rsubtype": "Send Message",
+      "formdata": [
+        "${dbsVars.DefaultChannel.id}",
+        "Command Author: ${dbsVars.CommandAuthor.displayName}\nTagged author: <@${dbsVars.CommandAuthor.id}>\n",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelName",
+        "messageText",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "kick",
+      "guid": "088f8c4c-884a-4103-a99a-d0b004a606ff",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "6c9c0fa1-ad24-4594-a570-a182cc045bab"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 10,
+      "y": 391,
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ]
+    },
+    {
+      "type": "response",
+      "name": "Get Mentioned User",
+      "guid": "6c9c0fa1-ad24-4594-a570-a182cc045bab",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "380fd4df-a221-426a-9d38-457fd1a48d4f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "088f8c4c-884a-4103-a99a-d0b004a606ff"
+        }
+      ],
+      "x": 201,
+      "y": 367,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "GetUserToKick",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Kick User",
+      "guid": "929ef194-c7b4-47f7-a58c-eab0c6ac3d48",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "12a35a60-3c03-4bb4-8c7f-de415a1fc9b4"
+        }
+      ],
+      "x": 738,
+      "y": 379,
+      "rtype": "User Action",
+      "rsubtype": "Kick User",
+      "formdata": [
+        "${tempVars.GetUserToKick.id}",
+        "${tempVars.ResonToKickUser}"
+      ],
+      "formnames": [
+        "user",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Reason to kick",
+      "guid": "380fd4df-a221-426a-9d38-457fd1a48d4f",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "ResonToKickUser",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "12a35a60-3c03-4bb4-8c7f-de415a1fc9b4"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "6c9c0fa1-ad24-4594-a570-a182cc045bab"
+        }
+      ],
+      "x": 382,
+      "y": 369,
+      "rtype": "Variable",
+      "rsubtype": "Store Value in Variable",
+      "formdata": [
+        "ResonToKickUser",
+        "Text",
+        "temp",
+        "0"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType",
+        "param"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Send DM to user for kick",
+      "guid": "12a35a60-3c03-4bb4-8c7f-de415a1fc9b4",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "929ef194-c7b4-47f7-a58c-eab0c6ac3d48"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "380fd4df-a221-426a-9d38-457fd1a48d4f"
+        }
+      ],
+      "x": 561,
+      "y": 368,
+      "rtype": "Message",
+      "rsubtype": "Send DM",
+      "formdata": [
+        "msg",
+        "${tempVars.GetUserToKick.id}",
+        "Subject: Discord Guild Removal Notification\n\nGreetings,\n\nYou have been expelled from ${dbsVars.guild.name} due to ${tempVars.ResonToKickUser}. We recommend reviewing the server rules and guidelines to ensure future compliance. If you have queries or wish to appeal, feel free to contact us.\n\nWishing you the best,\nThe Administration 🤖",
+        "FFFFFF",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "formnames": [
+        "msgtype",
+        "userid",
+        "msg",
+        "color",
+        "title",
+        "url",
+        "author",
+        "description",
+        "thumbnail",
+        "image",
+        "timestamp"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Server Rules",
+      "guid": "a8a16158-b46f-4f77-88d2-4c1845c67e85",
+      "reactionFields": [],
+      "embedfields": [],
+      "saveToVariable": "",
+      "saveToVariableType": "temp",
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "b5f9a130-bd9f-435b-af98-1450a2e09804"
+        }
+      ],
+      "x": 197,
+      "y": 523,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "Server Rules",
+        "",
+        "",
+        "https://cdn.discordapp.com/avatars/1191053073410433024/fbf52073a9bec88649ab1713a5d69844.webp",
+        "",
+        "**Welcome to Our Server!** 🚀\n\n1. **Respect Others:** Treat everyone with kindness and respect.\n2. **Chat Etiquette:** Keep discussions positive and appropriate.\n3. **Gaming Zone:** Gaming talks belong in 🎮-gaming-chat.\n4. **Newcomers:** Greet new members in 👋-welcome-messages.\n5. **Verify Yourself:** To accept the rules, type **`!verify`** in <#1191106699268997290>.\n6. **Tech Talk:** Explore tech in 🤖-tech-discussions.\n7. **Showcase Projects:** Share your work in 🚀-project-showcase.\n8. **Coding Help:** Seek coding assistance in 🛠-coding-help.\n9. **AI Queries:** Ask AI questions in ❓-ai-training-qa.\n10. **Community Support:** Help others in 🤝-community-support.\n11. **Ask Questions:** Pose general questions in ❓-general-questions.\n12. **Resource Sharing:** Share useful resources in 📚-resource-sharing.\n13. **Learning Corner:** Engage in the 📖-learning-corner.\n14. **Server Updates:** Stay tuned with 🚨-server-updates.\n15. **Report Issues:** Report problems in 🚨-report-section.\n16. **Server Stats:** Check out 📊-server-stats.\n17. **Voice Channels:** Hang out, get help, and game in voice channels.\n18. **Roles:** Roles define responsibilities and access.\n\n*Enjoy Your Stay!* 🌟",
+        "",
+        "",
+        "By Bonnie",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "SendRules",
+      "guid": "b5f9a130-bd9f-435b-af98-1450a2e09804",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "a8a16158-b46f-4f77-88d2-4c1845c67e85"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 12,
+      "y": 547,
+      "perms": [
+        "👑 admins",
+        "🛡️ moderators"
+      ]
+    },
+    {
+      "type": "command",
+      "name": "verify",
+      "guid": "130e20b1-5615-40c7-8898-aebab7a3a94f",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "50e37880-efd6-48d5-96b3-0744167d7ff5"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 15,
+      "y": 680,
+      "perms": []
+    },
+    {
+      "type": "response",
+      "name": "Remove Unverified Role",
+      "guid": "50e37880-efd6-48d5-96b3-0744167d7ff5",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "1b7607d8-fd17-4695-b8f0-3c90b93ed526"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "130e20b1-5615-40c7-8898-aebab7a3a94f"
+        }
+      ],
+      "x": 194,
+      "y": 670,
+      "rtype": "User Action",
+      "rsubtype": "Remove Role From User",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "1191517425271844935",
+        "User Verified"
+      ],
+      "formnames": [
+        "user",
+        "roleName",
+        "reason"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Add Member Role",
+      "guid": "1b7607d8-fd17-4695-b8f0-3c90b93ed526",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "a730fa49-c7e7-4181-8437-bd2b13c5227b"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "50e37880-efd6-48d5-96b3-0744167d7ff5"
+        }
+      ],
+      "x": 362,
+      "y": 686,
+      "rtype": "User Action",
+      "rsubtype": "Add Role to User",
+      "formdata": [
+        "${dbsVars.CommandAuthor.id}",
+        "👥 Community Members"
+      ],
+      "formnames": [
+        "user",
+        "roleName"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "Verified in Server DM",
+      "guid": "a730fa49-c7e7-4181-8437-bd2b13c5227b",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1b7607d8-fd17-4695-b8f0-3c90b93ed526"
+        }
+      ],
+      "x": 533,
+      "y": 691,
+      "rtype": "Message",
+      "rsubtype": "Send DM",
+      "formdata": [
+        "msg",
+        "${dbsVars.CommandAuthor.id}",
+        "Congratulations! 🎉 You have been successfully verified in ${dbsVars.guild.name}. Welcome, <@${dbsVars.CommandAuthor.id}>. Enjoy your time in our community!",
+        "FFFFFF",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "formnames": [
+        "msgtype",
+        "userid",
+        "msg",
+        "color",
+        "title",
+        "url",
+        "author",
+        "description",
+        "thumbnail",
+        "image",
+        "timestamp"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "command",
+      "name": "userinfo",
+      "guid": "1e132184-3e39-4e36-82a3-11d0f8c14b12",
+      "outputs": [
+        {
+          "label": "responses",
+          "connections": [
+            "22e8b77a-77fc-4b39-b1c0-130e75814fe8"
+          ]
+        }
+      ],
+      "inputs": [],
+      "x": 11,
+      "y": 866
+    },
+    {
+      "type": "response",
+      "name": "Get Mentioned User_1",
+      "guid": "22e8b77a-77fc-4b39-b1c0-130e75814fe8",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": [
+            "5034983b-6cbb-4355-8bae-863e06064f3f"
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "1e132184-3e39-4e36-82a3-11d0f8c14b12"
+        }
+      ],
+      "x": 191,
+      "y": 831,
+      "rtype": "Variable",
+      "rsubtype": "Get Mentioned User",
+      "formdata": [
+        "GetUserForUserInfo",
+        "User",
+        "temp"
+      ],
+      "formnames": [
+        "varname",
+        "vartype",
+        "saveVarType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    },
+    {
+      "type": "response",
+      "name": "userinfo reponse",
+      "guid": "5034983b-6cbb-4355-8bae-863e06064f3f",
+      "reactionFields": [],
+      "embedfields": [],
+      "outputs": [
+        {
+          "label": "next response",
+          "connections": []
+        }
+      ],
+      "inputs": [
+        {
+          "label": "trigger",
+          "id": "22e8b77a-77fc-4b39-b1c0-130e75814fe8"
+        }
+      ],
+      "x": 372,
+      "y": 856,
+      "rtype": "Message",
+      "rsubtype": "Send Embed",
+      "formdata": [
+        "${dbsVars.CommandChannel.id}",
+        "FFFFFF",
+        "User Avatar",
+        "",
+        "${dbsVars.CommandAuthor.displayName}",
+        "${dbsVars.CommandAuthor.user.avatarURL}",
+        "",
+        "Name of User <@${tempVars.GetUserForUserInfo.id}> Avatar of User ${tempVars.GetUserForUserInfo.user.avatarURL}",
+        "",
+        "${tempVars.GetUserForUserInfo.user.avatarURL}",
+        "",
+        "BOOL_TRUE@@",
+        "",
+        "temp"
+      ],
+      "formnames": [
+        "channelname",
+        "color",
+        "title",
+        "url",
+        "authorname",
+        "authorimageurl",
+        "authorlink",
+        "description",
+        "thumbnail",
+        "image",
+        "footer",
+        "timestamp",
+        "saveToVariable",
+        "saveToVariableType"
+      ],
+      "messageActionRows": [],
+      "valueFields": []
+    }
+  ]
+}
